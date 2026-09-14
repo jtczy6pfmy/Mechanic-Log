@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mechanic Repair Log</title>
+<style>
+:root{--bg:#111827;--card:#1f2937;--input:#374151;--border:#4b5563;--text:#f3f4f6;--muted:#9ca3af;--blue:#2563eb;--red:#dc2626}
+*{box-sizing:border-box}body{margin:0;padding:14px;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.container{max-width:950px;margin:auto}h1{text-align:center;font-size:1.35rem;letter-spacing:1px;margin:5px 0 15px;text-transform:uppercase}.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px}.title{font-size:.82rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{display:block;font-size:.76rem;color:var(--muted);margin-bottom:4px}input,select,textarea{width:100%;background:var(--input);border:1px solid var(--border);border-radius:6px;color:#fff;padding:10px;font-size:1rem}textarea{resize:vertical;min-height:85px}button{width:100%;border:0;border-radius:7px;padding:11px;color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;margin-top:10px;background:var(--blue)}.danger{background:var(--red)}.total{background:#0f172a;border:2px solid var(--blue);border-radius:10px;text-align:center;padding:14px}.total-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.total-hours{font-size:2.2rem;font-weight:800;color:#60a5fa}.entry{border:1px solid var(--border);border-radius:8px;padding:11px;margin-top:9px;background:#182230}.entry-head{display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700}.entry-hours{color:#60a5fa;white-space:nowrap}.entry-meta,.entry-comment{font-size:.86rem;color:#d1d5db;margin-top:6px}.entry-work{margin-top:8px;font-size:.9rem}.delete{width:auto;margin:0;padding:6px 9px;background:var(--red);font-size:.75rem}.empty{text-align:center;color:var(--muted);padding:18px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:650px){.grid,.actions{grid-template-columns:1fr}h1{font-size:1.15rem}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Mechanic Repair Log</h1>
+<div class="card">
+<div class="title">Daily Information</div>
+<div class="grid">
+<div><label>Mechanic Name</label><select id="mechanic"><option value="">Select Mechanic</option><option>Jose R</option><option>Other</option></select></div>
+<div><label>Repair Yard / Location</label><select id="location"><option value="">Select Location</option><option>Harrisburg</option><option>Other</option></select></div>
+</div>
+<div style="margin-top:10px"><label>Date</label><input type="date" id="repairDate"></div>
+<div class="total" style="margin-top:10px"><div class="total-label">Current Total Hours Completed</div><div class="total-hours" id="totalHours">0.0 hrs</div></div>
+</div>
+<div class="card">
+<div class="title">Repair Entry</div>
+<div class="grid">
+<div><label>Chassis Prefix</label><select id="prefix"><option value="">Select</option><option>NSPZ</option><option>NSFZ</option></select></div>
+<div><label>Chassis Number</label><input id="chassis" inputmode="numeric" maxlength="6" placeholder="123456"></div>
+</div>
+<div style="margin-top:10px"><label>Repair Hours From Work Order</label><input type="number" id="hours" min="0" step="0.1" placeholder="0.0"></div>
+<div style="margin-top:10px"><label>Work Done</label><textarea id="workDone" placeholder="List the work performed on this chassis"></textarea></div>
+<div style="margin-top:10px"><label>Comments — Reason Production Hours Were Not Met</label><textarea id="comment" placeholder="Parts delay, waiting on chassis, additional repair, etc."></textarea></div>
+<button id="addBtn">+ ADD REPAIR</button>
+</div>
+<div class="card"><div class="title">Today's Work</div><div id="entries"></div></div>
+<div class="card"><div class="actions"><button id="exportBtn">EXPORT CSV</button><button class="danger" id="clearBtn">CLEAR TODAY</button></div></div>
+</div>
+<script>
+const KEY='mechanicRepairLog_v3';let entries=[];try{entries=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){entries=[]}
+const $=id=>document.getElementById(id);$('repairDate').valueAsDate=new Date();
+function save(){localStorage.setItem(KEY,JSON.stringify(entries))}function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){let total=entries.reduce((s,e)=>s+(Number(e.hours)||0),0);$('totalHours').textContent=total.toFixed(1)+' hrs';let box=$('entries');if(!entries.length){box.innerHTML='<div class="empty">No repairs logged yet today.</div>';save();return}box.innerHTML=entries.map((e,i)=>`<div class="entry"><div class="entry-head"><span>${esc(e.prefix)} ${esc(e.chassis)}</span><span class="entry-hours">${Number(e.hours).toFixed(1)} hrs</span><button class="delete" onclick="removeEntry(${i})">DELETE</button></div><div class="entry-meta">${esc(e.mechanic)} • ${esc(e.location)}</div><div class="entry-work"><strong>Work:</strong> ${esc(e.workDone)}</div>${e.comment?`<div class="entry-comment"><strong>Comment:</strong> ${esc(e.comment)}</div>`:''}</div>`).join('');save()}
+function add(){let mechanic=$('mechanic').value,location=$('location').value,prefix=$('prefix').value,chassis=$('chassis').value.trim(),hours=$('hours').value,work=$('workDone').value.trim(),comment=$('comment').value.trim();if(!mechanic)return alert('Select a mechanic.');if(!location)return alert('Select the repair yard.');if(!prefix)return alert('Select NSPZ or NSFZ.');if(!/^\d{6}$/.test(chassis))return alert('Enter a 6-digit chassis number.');if(hours===''||Number(hours)<0)return alert('Enter the repair hours from the work order.');if(!work)return alert('Enter the work done.');entries.push({mechanic,location,prefix,chassis,hours:Number(hours),workDone:work,comment,date:$('repairDate').value});$('chassis').value='';$('hours').value='';$('workDone').value='';$('comment').value='';render();$('prefix').focus()}
+function removeEntry(i){entries.splice(i,1);render()}function clearToday(){if(confirm('Clear all repairs for today?')){entries=[];render()}}
+function csv(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}function exportCSV(){let out='Mechanic,Location,Date,Chassis,Repair Hours,Work Done,Comments\n';entries.forEach(e=>out+=[e.mechanic,e.location,e.date,e.prefix+' '+e.chassis,e.hours,e.workDone,e.comment].map(csv).join(',')+'\n');out+='\nDaily Total Hours,'+csv(entries.reduce((s,e)=>s+(Number(e.hours)||0),0).toFixed(1))+'\n';let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out],{type:'text/csv'}));a.download='Mechanic_Log_'+$('repairDate').value+'.csv';a.click()}
+$('addBtn').onclick=add;$('clearBtn').onclick=clearToday;$('exportBtn').onclick=exportCSV;render();
+</script>
+</body></html>
