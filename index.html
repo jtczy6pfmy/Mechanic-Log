@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{--bg:#111827;--card:#1f2937;--input:#374151;--border:#4b5563;--text:#f3f4f6;--muted:#9ca3af;--blue:#2563eb;--green:#16a34a;--red:#dc2626}
-*{box-sizing:border-box}body{margin:0;padding:14px;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.container{max-width:950px;margin:auto}h1{text-align:center;font-size:1.4rem;letter-spacing:1px;margin:5px 0 4px;text-transform:uppercase}.subtitle{text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:15px}.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px}.title{font-size:.82rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{display:block;font-size:.76rem;color:var(--muted);margin-bottom:4px}input,select,textarea{width:100%;background:var(--input);border:1px solid var(--border);border-radius:6px;color:#fff;padding:10px;font-size:1rem}textarea{resize:vertical;min-height:85px}button{width:100%;border:0;border-radius:7px;padding:11px;color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;margin-top:10px;background:var(--blue)}button:disabled{opacity:.55;cursor:not-allowed}.danger{background:var(--red)}.success{background:var(--green)}.total{background:#0f172a;border:2px solid var(--blue);border-radius:10px;text-align:center;padding:14px;margin-top:10px}.total-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.total-hours{font-size:2.2rem;font-weight:800;color:#60a5fa;margin-top:3px}.weekly{background:#172033;border:1px solid #475569;border-radius:10px;text-align:center;padding:13px;margin-top:10px}.weekly-hours{font-size:1.8rem;font-weight:800;color:#93c5fd;margin-top:3px}.weekly-range{font-size:.75rem;color:var(--muted);margin-top:3px}.tire-card{background:#172033;border:1px solid #475569;border-radius:8px;padding:11px;margin-top:10px}.tire-title{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px}.entry{border:1px solid var(--border);border-radius:8px;padding:11px;margin-top:9px;background:#182230}.entry-head{display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700}.entry-hours{color:#60a5fa;white-space:nowrap}.entry-meta,.entry-comment{font-size:.86rem;color:#d1d5db;margin-top:6px}.delete{width:auto;margin:0;padding:6px 9px;background:var(--red);font-size:.75rem}.empty{text-align:center;color:var(--muted);padding:18px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status{font-size:.78rem;text-align:center;color:var(--muted);margin-top:8px}.status.error{color:#fca5a5}.status.ok{color:#86efac}@media(max-width:650px){.grid,.actions{grid-template-columns:1fr}h1{font-size:1.15rem}.entry-head{align-items:flex-start;flex-wrap:wrap}}
+*{box-sizing:border-box}body{margin:0;padding:14px;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.container{max-width:950px;margin:auto}h1{text-align:center;font-size:1.4rem;letter-spacing:1px;margin:5px 0 4px;text-transform:uppercase}.subtitle{text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:15px}.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px}.title{font-size:.82rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{display:block;font-size:.76rem;color:var(--muted);margin-bottom:4px}input,select,textarea{width:100%;background:var(--input);border:1px solid var(--border);border-radius:6px;color:#fff;padding:10px;font-size:1rem}textarea{resize:vertical;min-height:75px}button{width:100%;border:0;border-radius:7px;padding:11px;color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;margin-top:10px;background:var(--blue)}button:disabled{opacity:.55;cursor:not-allowed}.danger{background:var(--red)}.total{background:#0f172a;border:2px solid var(--blue);border-radius:10px;text-align:center;padding:14px;margin-top:10px}.total-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.total-hours{font-size:2.2rem;font-weight:800;color:#60a5fa;margin-top:3px}.weekly{background:#172033;border:1px solid #475569;border-radius:10px;text-align:center;padding:13px;margin-top:10px}.weekly-hours{font-size:1.8rem;font-weight:800;color:#93c5fd;margin-top:3px}.weekly-range{font-size:.75rem;color:var(--muted);margin-top:3px}.tire-card{background:#172033;border:1px solid #475569;border-radius:8px;padding:11px;margin-top:10px}.tire-title{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px}.entry{border:1px solid var(--border);border-radius:8px;padding:11px;margin-top:9px;background:#182230}.entry-head{display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:700}.entry-hours{color:#60a5fa;white-space:nowrap}.entry-meta,.entry-comment{font-size:.86rem;color:#d1d5db;margin-top:6px}.delete{width:auto;margin:0;padding:6px 9px;background:var(--red);font-size:.75rem}.empty{text-align:center;color:var(--muted);padding:18px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status{font-size:.78rem;text-align:center;color:var(--muted);margin-top:8px}.status.error{color:#fca5a5}.status.ok{color:#86efac}.check-row{display:flex;align-items:center;gap:9px;background:#172033;border:1px solid #475569;border-radius:8px;padding:11px;margin-top:10px}.check-row input{width:20px;height:20px;margin:0;accent-color:var(--blue)}.check-row label{margin:0;color:var(--text);font-weight:700;font-size:.9rem}.conditional{display:none;margin-top:10px}.conditional.show{display:block}.repair-hint{font-size:.72rem;color:var(--muted);margin-top:5px}@media(max-width:650px){.grid,.actions{grid-template-columns:1fr}h1{font-size:1.15rem}.entry-head{align-items:flex-start;flex-wrap:wrap}}
 </style>
 </head>
 <body>
@@ -33,10 +33,22 @@
 <div class="card">
 <div class="title">Repair Entry</div>
 <div class="grid">
-<div><label>Repair Code / Type</label><input id="repairCode" placeholder="Example: Brake repair"></div>
+<div><label>Chassis Prefix</label><select id="prefix"><option value="NSPZ">NSPZ</option><option value="NSFZ">NSFZ</option></select></div>
 <div><label>Chassis Number</label><input id="chassis" inputmode="numeric" maxlength="6" placeholder="123456"></div>
 </div>
-<div style="margin-top:10px"><label>Repair Hours From Work Order</label><input type="number" id="hours" min="0" step="0.1" placeholder="0.0"></div>
+<div style="margin-top:10px"><label>Repair Time (Hours)</label><input type="number" id="hours" min="0" step="0.1" placeholder="0.0"></div>
+
+<div class="check-row">
+<input type="checkbox" id="postAuditFail">
+<label for="postAuditFail">Post Audit Fail</label>
+</div>
+
+<div id="repairNameWrap" class="conditional">
+<label for="repairName">Repair Name</label>
+<select id="repairName"><option value="">Loading repair names...</option></select>
+<div class="repair-hint">Select the repair that caused the post-audit failure.</div>
+</div>
+
 <div class="tire-card">
 <div class="tire-title">Tires Changed</div>
 <div class="grid">
@@ -44,7 +56,7 @@
 <div><label>10.00.20 Quantity Changed</label><input type="number" id="tire100020" min="0" step="1" value="0" inputmode="numeric"></div>
 </div>
 </div>
-<div style="margin-top:10px"><label>Comments — Reason Production Hours Were Not Met</label><textarea id="comment" placeholder="Parts delay, waiting on chassis, additional repair, additional work, etc."></textarea></div>
+<div style="margin-top:10px"><label>Comments</label><textarea id="comment" placeholder="Additional notes"></textarea></div>
 <button id="addBtn">+ ADD REPAIR</button>
 </div>
 
@@ -59,6 +71,7 @@ const SUPABASE_KEY='sb_publishable_d8BOrorgRu6otWAAipOnUg_qCb-WqUW';
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const $=id=>document.getElementById(id);
 let mechanics=[];
+let repairMatrix=[];
 let entries=[];
 
 $('repairDate').valueAsDate=new Date();
@@ -75,13 +88,21 @@ async function loadMechanics(){
   if(error){setStatus('Could not load mechanics: '+error.message,true);$('mechanic').innerHTML='<option value="">Database error</option>';return}
   mechanics=data||[];
   $('mechanic').innerHTML='<option value="">Select Mechanic</option>'+mechanics.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');
-  if(!mechanics.length)setStatus('Database connected — add the 10 mechanics to the mechanics table.',true);else setStatus(mechanics.length+' mechanic'+(mechanics.length===1?'':'s')+' loaded from Supabase.');
+  if(!mechanics.length)setStatus('Database connected — no active mechanics found.',true);else setStatus(mechanics.length+' mechanic'+(mechanics.length===1?'':'s')+' loaded from Supabase.');
+}
+
+async function loadRepairMatrix(){
+  const {data,error}=await db.from('repair_matrix').select('id,repair_code,repair_name,standard_hours').eq('active',true).order('repair_name');
+  if(error){$('repairName').innerHTML='<option value="">Could not load repair names</option>';return}
+  repairMatrix=data||[];
+  if(!repairMatrix.length){$('repairName').innerHTML='<option value="">No repair names configured</option>';return}
+  $('repairName').innerHTML='<option value="">Select Repair Name</option>'+repairMatrix.map(r=>`<option value="${r.id}">${esc(r.repair_name)}${r.repair_code?' — '+esc(r.repair_code):''}</option>`).join('');
 }
 
 async function loadEntries(){
   const selected=$('repairDate').value;
   const start=weekStart(selected),end=new Date(start);end.setDate(end.getDate()+6);
-  const {data,error}=await db.from('repairs').select('id,mechanic_id,repair_code,repair_date,shift,hours,tires_11r225,tires_100020,notes,mechanics(name)').gte('repair_date',isoDate(start)).lte('repair_date',isoDate(end)).order('created_at',{ascending:false});
+  const {data,error}=await db.from('repairs').select('id,mechanic_id,repair_matrix_id,repair_code,chassis_prefix,repair_date,shift,hours,post_audit_fail,tires_11r225,tires_100020,notes,mechanics(name)').gte('repair_date',isoDate(start)).lte('repair_date',isoDate(end)).order('created_at',{ascending:false});
   if(error){setStatus('Could not load repair records: '+error.message,true);return}
   entries=(data||[]).map(e=>({...e,mechanic:e.mechanics?.name||'Unknown'}));
   render();
@@ -100,27 +121,30 @@ function render(){
   const box=$('entries');
   if(!today.length){box.innerHTML='<div class="empty">No repairs logged for this date.</div>';return}
   box.innerHTML=today.map(e=>`<div class="entry">
-    <div class="entry-head"><span>${esc(e.repair_code||'Repair')} ${e.repair_code&&e.notes?.match(/Chassis:\s*([0-9]{6})/) ? '— '+e.notes.match(/Chassis:\s*([0-9]{6})/)[1] : ''}</span><span class="entry-hours">${Number(e.hours||0).toFixed(1)} hrs</span><button class="delete" onclick="removeEntry(${e.id})">DELETE</button></div>
-    <div class="entry-meta">${esc(e.mechanic)} • ${esc(e.shift||'')} • ${esc(e.repair_date)} • 11R22.5: ${Number(e.tires_11r225||0)} • 10.00.20: ${Number(e.tires_100020||0)}</div>
+    <div class="entry-head"><span>${esc(e.chassis_prefix||'')} ${esc(e.notes?.match(/Chassis:\s*[A-Z]+\s*([0-9]{6})/)?.[1]||'')} ${e.post_audit_fail?'— POST AUDIT FAIL':''}</span><span class="entry-hours">${Number(e.hours||0).toFixed(1)} hrs</span><button class="delete" onclick="removeEntry(${e.id})">DELETE</button></div>
+    <div class="entry-meta">${esc(e.mechanic)} • ${esc(e.shift||'')} • ${esc(e.repair_date)}${e.repair_code&&e.repair_code!=='Repair'?' • '+esc(e.repair_code):''} • 11R22.5: ${Number(e.tires_11r225||0)} • 10.00.20: ${Number(e.tires_100020||0)}</div>
     ${e.notes?`<div class="entry-comment">${esc(e.notes)}</div>`:''}
   </div>`).join('');
 }
 
 async function add(){
-  const mechanicId=$('mechanic').value,location=$('location').value,shift=$('shift').value,repairCode=$('repairCode').value.trim(),chassis=$('chassis').value.trim(),hours=$('hours').value,comment=$('comment').value.trim(),tire11225=$('tire11225').value,tire100020=$('tire100020').value,date=$('repairDate').value;
+  const mechanicId=$('mechanic').value,location=$('location').value,shift=$('shift').value,prefix=$('prefix').value,chassis=$('chassis').value.trim(),hours=$('hours').value,postAuditFail=$('postAuditFail').checked,repairMatrixId=$('repairName').value,tire11225=$('tire11225').value,tire100020=$('tire100020').value,comment=$('comment').value.trim(),date=$('repairDate').value;
   if(!mechanicId)return alert('Select a mechanic.');
   if(!location)return alert('Select the repair yard.');
   if(!shift)return alert('Select the shift worked.');
   if(!/^\d{6}$/.test(chassis))return alert('Enter a 6-digit chassis number.');
-  if(hours===''||Number(hours)<0)return alert('Enter the repair hours from the work order.');
+  if(hours===''||Number(hours)<0)return alert('Enter the repair time.');
+  if(postAuditFail&&!repairMatrixId)return alert('Select the repair name for the post-audit failure.');
   if(tire11225===''||Number(tire11225)<0||!Number.isInteger(Number(tire11225)))return alert('Enter a whole-number quantity for 11R22.5 tires.');
   if(tire100020===''||Number(tire100020)<0||!Number.isInteger(Number(tire100020)))return alert('Enter a whole-number quantity for 10.00.20 tires.');
-  const notes=[location?'Location: '+location:'',chassis?'Chassis: '+chassis:'',comment].filter(Boolean).join(' | ');
+  const selectedRepair=repairMatrix.find(r=>String(r.id)===String(repairMatrixId));
+  const repairCode=postAuditFail?(selectedRepair?.repair_code||selectedRepair?.repair_name||'Post Audit Fail'):'Repair';
+  const notes=[location?'Location: '+location:'',`Chassis: ${prefix}${chassis}`,postAuditFail&&selectedRepair?`Repair Name: ${selectedRepair.repair_name}`:'',comment].filter(Boolean).join(' | ');
   $('addBtn').disabled=true;$('addBtn').textContent='SAVING...';
-  const {error}=await db.from('repairs').insert({mechanic_id:Number(mechanicId),repair_code:repairCode||'Repair',repair_date:date,shift,hours:Number(hours),tires_11r225:Number(tire11225),tires_100020:Number(tire100020),notes});
+  const {error}=await db.from('repairs').insert({mechanic_id:Number(mechanicId),repair_matrix_id:postAuditFail?Number(repairMatrixId):null,repair_code:repairCode,chassis_prefix:prefix,repair_date:date,shift,hours:Number(hours),post_audit_fail:postAuditFail,tires_11r225:Number(tire11225),tires_100020:Number(tire100020),notes});
   $('addBtn').disabled=false;$('addBtn').textContent='+ ADD REPAIR';
   if(error){setStatus('Save failed: '+error.message,true);alert('Could not save repair: '+error.message);return}
-  $('repairCode').value='';$('chassis').value='';$('hours').value='';$('tire11225').value='0';$('tire100020').value='0';$('comment').value='';
+  $('chassis').value='';$('hours').value='';$('postAuditFail').checked=false;$('repairName').value='';$('repairNameWrap').classList.remove('show');$('tire11225').value='0';$('tire100020').value='0';$('comment').value='';
   setStatus('Repair saved to Supabase.');await loadEntries();
 }
 
@@ -143,15 +167,21 @@ function csv(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
 function exportCSV(){
   const selected=$('repairDate').value,start=weekStart(selected),end=new Date(start);end.setDate(end.getDate()+6);let startKey=isoDate(start),endKey=isoDate(end);
   let rows=entries.filter(e=>e.repair_date>=startKey&&e.repair_date<=endKey);
-  let out='Mechanic,Location,Shift,Date,Repair Code,Chassis,Repair Hours,11R22.5 Quantity Changed,10.00.20 Quantity Changed,Notes\n';
-  rows.forEach(e=>{let loc=(e.notes||'').match(/Location:\s*([^|]+)/)?.[1]?.trim()||'';let ch=(e.notes||'').match(/Chassis:\s*([0-9]{6})/)?.[1]||'';let note=(e.notes||'').replace(/Location:\s*[^|]+\s*\|?\s*/,'').replace(/Chassis:\s*[0-9]{6}\s*\|?\s*/,'').trim();out+=[e.mechanic,loc,e.shift,e.repair_date,e.repair_code,ch,Number(e.hours||0).toFixed(1),Number(e.tires_11r225||0),Number(e.tires_100020||0),note].map(csv).join(',')+'\n'});
-  let weekly=rows.reduce((s,e)=>s+Number(e.hours||0),0);let today=rows.filter(e=>e.repair_date===selected);let tire11=today.reduce((s,e)=>s+Number(e.tires_11r225||0),0);let tire10=today.reduce((s,e)=>s+Number(e.tires_100020||0),0);
-  out+='\nWeekly Completed Hours,'+csv(weekly.toFixed(1))+'\n';out+='11R22.5 Total Quantity Changed Today,'+csv(tire11)+'\n';out+='10.00.20 Total Quantity Changed Today,'+csv(tire10)+'\n';
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([out],{type:'text/csv'}));a.download='Mechanic_Log_'+selected+'.csv';a.click();URL.revokeObjectURL(a.href);
+  let out='Mechanic,Location,Shift,Date,Prefix,Chassis,Repair Time,Post Audit Fail,Repair Name,11R22.5 Quantity Changed,10.00.20 Quantity Changed,Notes\n';
+  rows.forEach(e=>{let loc=(e.notes||'').match(/Location:\s*([^|]+)/)?.[1]?.trim()||'';let ch=(e.notes||'').match(/Chassis:\s*[A-Z]+\s*([0-9]{6})/)?.[1]||'';let rn=(e.notes||'').match(/Repair Name:\s*([^|]+)/)?.[1]?.trim()||'';let note=(e.notes||'').replace(/Location:\s*[^|]+\s*\|?\s*/,'').replace(/Chassis:\s*[A-Z]+\s*[0-9]{6}\s*\|?\s*/,'').replace(/Repair Name:\s*[^|]+\s*\|?\s*/,'').trim();out+=[e.mechanic,loc,e.shift,e.repair_date,e.chassis_prefix||'',ch,Number(e.hours||0).toFixed(1),e.post_audit_fail?'Yes':'No',rn,Number(e.tires_11r225||0),Number(e.tires_100020||0),note].map(csv).join(',')+'\n'});
+  let weekly=rows.reduce((s,e)=>s+Number(e.hours||0),0);out+='\nWeekly Completed Hours,'+csv(weekly.toFixed(1))+'\n';
+  const blob=new Blob([out],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mechanic-log-'+selected+'.csv';a.click();URL.revokeObjectURL(url);
 }
 
-$('addBtn').onclick=add;$('clearBtn').onclick=clearToday;$('exportBtn').onclick=exportCSV;$('repairDate').onchange=loadEntries;
-(async()=>{await loadMechanics();await loadEntries()})();
+$('postAuditFail').addEventListener('change',()=>{
+  $('repairNameWrap').classList.toggle('show',$('postAuditFail').checked);
+});
+$('addBtn').addEventListener('click',add);
+$('clearBtn').addEventListener('click',clearToday);
+$('exportBtn').addEventListener('click',exportCSV);
+$('repairDate').addEventListener('change',loadEntries);
+
+Promise.all([loadMechanics(),loadRepairMatrix(),loadEntries()]);
 </script>
 </body>
 </html>
